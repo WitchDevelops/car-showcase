@@ -5,21 +5,19 @@ import { CustomButton, CarDetails } from "@/components";
 import { calculateCarRent } from "@/utils";
 import { CarProps } from "@/types";
 
-
 interface CarCardProps {
   car: CarProps;
 }
 
 export const CarCard: React.FC<CarCardProps> = ({ car }) => {
-  const { city_mpg, year, make, model, transmission, drive } = car;
-  const carRent = calculateCarRent(city_mpg, year);
+  const carRent = calculateCarRent(car.city_mpg, car.year);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="car-card group">
       <div className="car-card__content">
         <h2 className="car-card__content-title">
-          {make} {model}
+          {car.make} {car.model}
         </h2>
       </div>
       <p className="flex mt-6 text-[32px] font-extrabold">
@@ -30,7 +28,7 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
           src="/hero.png"
-          alt={`${make} ${model} ${year}`}
+          alt={`${car.make} ${car.model} ${car.year}`}
           fill
           priority
           className="object-contain"
@@ -47,16 +45,16 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
               alt="steering wheel"
             />
             <p className="text-[14px]">
-              {transmission === "a" ? "Automatic" : "Manual"}
+              {car.transmission === "a" ? "Automatic" : "Manual"}
             </p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
             <Image src="/tire.svg" width={20} height={20} alt="drive" />
-            <p className="text-[14px]">{drive.toUpperCase()}</p>
+            <p className="text-[14px]">{car.drive.toUpperCase()}</p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
             <Image src="/gas.svg" width={20} height={20} alt="steering wheel" />
-            <p className="text-[14px]">{city_mpg} MPG</p>
+            <p className="text-[14px]">{car.city_mpg} MPG</p>
           </div>
         </div>
 
@@ -72,7 +70,11 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
         </div>
       </div>
 
-      <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)}  car={car} />
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };

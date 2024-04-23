@@ -14,29 +14,25 @@ interface CustomButtonProps {
   handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const CustomButton = ({
-  state,
-  type,
-  title,
-  containerStyles,
-  textStyles,
-  rightIcon,
-  handleClick,
-}: CustomButtonProps) => {
+export const CustomButton: React.FC<CustomButtonProps> = (props) => {
   return (
     <button
-      disabled={state}
-      type={type}
-      className={`custom-btn ${containerStyles} ${textStyles}`}
-      onClick={handleClick}
+      disabled={props.state}
+      type={props.type}
+      className={`custom-btn ${props.containerStyles} ${props.textStyles}`}
+      onClick={props.handleClick}
     >
-      <span className={`flex-1`}>{title}</span>
-      {rightIcon && (
+      <span className={`flex-1`}>{props.title}</span>
+      {props.rightIcon && (
         <div className="relative w-6 h-6">
-          <Image src={rightIcon} alt={rightIcon} fill className="object-contain"/>
+          <Image
+            src={props.rightIcon}
+            alt={props.rightIcon}
+            fill
+            className="object-contain"
+          />
         </div>
       )}
     </button>
   );
 };
-

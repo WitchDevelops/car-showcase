@@ -7,6 +7,6 @@ interface CarDetailsProps {
   car: CarProps;
 }
 
-export const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+export const CarDetails: React.FC<CarDetailsProps> = (props) => {
   return <div>CarDetails</div>;
 };
