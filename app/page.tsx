@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Hero, CustomFilter, SearchBar } from "@/components";
 import { fetchCars } from "@/utils";
 import { CarCard } from "@/components";
+import dotenv from 'dotenv';
 
 export default async function Home() {
   const allCars = await fetchCars();
