@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { CustomButton, CarDetails } from "@/components";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import { CarProps } from "@/types";
 
 interface CarCardProps {
@@ -27,7 +27,7 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
       </p>
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src="/hero.png"
+          src={generateCarImageUrl(car)}
           alt={`${car.make} ${car.model} ${car.year}`}
           fill
           priority

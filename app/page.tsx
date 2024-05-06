@@ -2,10 +2,17 @@ import Image from "next/image";
 import { Hero, CustomFilter, SearchBar } from "@/components";
 import { fetchCars } from "@/utils";
 import { CarCard } from "@/components";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 
-export default async function Home() {
-  const allCars = await fetchCars();
+export default async function Home({ searchParams }) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    model: searchParams.model || "",
+    year: searchParams.year || "",
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 12,
+  });
   // not an array, array but empty, or not at all
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
@@ -21,8 +28,8 @@ export default async function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            <CustomFilter title="fuel" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
 

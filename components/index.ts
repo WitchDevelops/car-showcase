@@ -3,6 +3,7 @@ import { CustomButton } from './CustomButton';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { SearchBar } from './SearchBar';
+import { SearchButton } from './SearchButton';
 import { SearchManufacturer } from './SearchManufacturer';
 import { CustomFilter } from './CustomFilter';
 import { CarCard } from './CarCard';
@@ -17,5 +18,6 @@ export {
     Hero,
     Navbar,
     SearchBar,
+    SearchButton,
     SearchManufacturer,
 }
