@@ -6,16 +6,16 @@ import { Combobox, Transition } from "@headlessui/react";
 import { manufacturers } from "@/constants";
 
 interface SearchManufacturerProps {
-  manufacturer: string;
-  setManufacturer: (manufacturer: string) => void;
+  selected: string;
+  setSelected: (selected: string) => void;
 }
 
 export const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
-  manufacturer,
-  setManufacturer,
+  selected,
+  setSelected,
 }) => {
   const [selectedManufacturer, setSelectedManufacturer] = useState(
-    manufacturer[0]
+    selected[0]
   );
   const [query, setQuery] = useState("");
 
@@ -32,7 +32,7 @@ export const SearchManufacturer: React.FC<SearchManufacturerProps> = ({
   return (
     <div className="search-manufacturer">
       <div className="relative w-full">
-        <Combobox value={manufacturer} onChange={setManufacturer}>
+        <Combobox value={selected} onChange={setSelected}>
           <Combobox.Button className="absolute top-[14px]">
             <Image
               src="/car-logo.svg"
