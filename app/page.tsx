@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Hero, CustomFilter, SearchBar } from "@/components";
+import { Hero, CarCard, CustomFilter, SearchBar, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
-import { CarCard, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 
 export default function Home() {
