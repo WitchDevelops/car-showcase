@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { SearchManufacturer, SearchButton } from "@/components";
 
@@ -13,7 +12,7 @@ interface SearchBarProps {
 export const SearchBar = ({ setManufacturer, setModel }: SearchBarProps) => {
   const [searchManufacturer, setSearchManufacturer] = useState("");
   const [searchModel, setSearchModel] = useState("");
-  const router = useRouter();
+
   const handleSearch = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (!searchManufacturer && !searchModel) {
@@ -35,15 +34,15 @@ export const SearchBar = ({ setManufacturer, setModel }: SearchBarProps) => {
       </div>
       <div className="searchbar__item">
         <Image
-          src="/searchModel-icon.png"
-          alt="car searchModel"
+          src="/model-icon.png"
+          alt="car model"
           width={25}
           height={25}
           className="absolute w-[20px] h-[20px] ml-4"
         />
         <input
           type="text"
-          name="searchModel"
+          name="search model"
           value={searchModel}
           onChange={(e) => setSearchModel(e.target.value)}
           placeholder="Polo"

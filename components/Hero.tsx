@@ -4,8 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { CustomButton } from "@/components";
 
-export const Hero = () => {
-  const handleScroll = () => {};
+interface HeroProps {
+  handleScroll: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({handleScroll}) => {
+
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">

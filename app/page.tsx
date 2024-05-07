@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Hero, CustomFilter, SearchBar } from "@/components";
 import { fetchCars } from "@/utils";
@@ -49,11 +49,16 @@ export default function Home() {
     getCars();
   }, [fuel, year, limit, manufacturer, model]);
 
+  const discoverRef = useRef<HTMLDivElement>(null);
+  const handleScroll = () => {
+    discoverRef.current?.scrollIntoView({behavior: "smooth"})
+  };
+
   return (
     <main className="overflow-hidden">
-      <Hero />
+      <Hero handleScroll={handleScroll} />
 
-      <div className="mt-12 padding-x padding-y max-width" id="discover">
+      <div ref={discoverRef} className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore the cars you might like</p>
