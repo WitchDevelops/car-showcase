@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Hero, CustomFilter, SearchBar } from "@/components";
 import { fetchCars } from "@/utils";
-import { CarCard } from "@/components";
+import { CarCard, ShowMore } from "@/components";
 import dotenv from "dotenv";
 import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 
@@ -48,6 +48,10 @@ export default async function Home({ searchParams }) {
           </div>
         )}
       </div>
+      <ShowMore
+        pageNumber={(searchParams.limit || 10) / 10}
+        isNext={(searchParams.limit || 10) > allCars.length}
+      />
     </main>
   );
 }
